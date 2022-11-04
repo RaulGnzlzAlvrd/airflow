@@ -73,8 +73,8 @@ la interfaz web ejecutar el comando:
 airflow webserver
 ```
 
-Para detener los dos comandos anteriores solo hay que cerrar la terminal o
-pulsar `CTRL+C`.
+> Para detener los dos comandos anteriores solo hay que cerrar la terminal o
+> pulsar `CTRL+C`.
 
 La interfaz web se ejecutará por defecto en el puerto `8080`. Así que
-para acceder a ella visitar desde el navegador: `localhost:8080`.
+para acceder a ella visitar desde el navegador: [localhost:8080](localhost:8080).

@@ -51,11 +51,11 @@ y la contraseña `admin` (con la opción `-p`), pero puedes escoger el usuario y
 contraseña de tu preferencia:
 ```
 airflow users create -u admin \
-					 -p admin \
-					 -f first_name \
-					 -l last_name \
-					 -r Admin \
-					 -e admin@airflow.com
+    -p admin \
+    -f first_name \
+	-l last_name \
+	-r Admin \
+	-e admin@airflow.com
 ```
 
 ## Iniciar scheduler e interfaz

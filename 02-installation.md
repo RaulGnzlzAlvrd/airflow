@@ -8,36 +8,47 @@ Para facilitar el manejo de paquetes y tenerlos separados
 de los paquetes del sistema, se recomienda usar un ambiente
 virtual de python.
 
-Para crear el ambiente: `python -m venv sandbox`
+Para crear el ambiente ejecutar el siguiente comando: 
+```
+python -m venv sandbox
+```
 
-Para activar el ambiente: `source sandbox/bin/activate`
-> Nota: debe ejecutarse desde el mismo directorio que el
+Una vez creado el ambiente hay que activarlo, para ello ejecutar el comando: 
+```
+source sandbox/bin/activate
+```
+
+> Nota: El comando anterior debe ejecutarse desde el mismo directorio que el
 comando de creción de ambiente.
 
 ## Instalación de paquetes
-Teniendo el ambiente virtual activado, instalar el
-paquete `wheel`: `pip install wheel`
-
-En este [gist](https://gist.github.com/marclamberti/742efaef5b2d94f44666b0aec020be7c#file-airflow-version)
-hay que revisar el archivo `Airflow Version` que tiene la versión
-de airflow que se tiene que instalar. También viene el archivo
-`constraint.txt` con las dependencias a instalar para que no haya errores.
-
-Así el comando a ejecutar sería:
+Teniendo el ambiente virtual activado, instalar el paquete `wheel`, que
+es necesario para ejecutar Airflow: 
 ```
-pip install apache-airflow==[version] --constraint https://gist.githubusercontent.com/marclamberti/742efaef5b2d94f44666b0aec020be7c/raw/21c88601337250b6fd93f1adceb55282fb07b7ed/constraint.txt
+pip install wheel
 ```
-> Nota: el link para el constraint se obtiene de clickar en `Raw`
-en el gist de `constraint.txt`
+
+Luego instalar el paquete `apache-airflow` con el siguiente comando:
+```
+pip install apache-airflow
+```
 
 ## Configuración inicial
 Antes de poder ejecutar airflow se tiene que crear los
 archivos de configuración básica e incializar el
-metastore con el comando: `airflow db init`
+metastore. Para ello ejecutar el comando: 
+```
+airflow db init
+```
 
-Luego se crea el usuario administrador para poder iniciar
-sesión en la interfaz web, tiene el nombre de usuario `admin`
-y la contraseña `admin`:
+> El comando anterior creará la carpeta principal de Airflow en
+> el directorio `~/airflow`.
+
+Luego se necesita crear el usuario administrador para poder iniciar
+sesión en la interfaz web. 
+En el siguiente ejemplo se elige el nombre de usuario `admin` (con la opción `-u`)
+y la contraseña `admin` (con la opción `-p`), pero puedes escoger el usuario y
+contraseña de tu preferencia:
 ```
 airflow users create -u admin \
 					 -p admin \
@@ -48,16 +59,22 @@ airflow users create -u admin \
 ```
 
 ## Iniciar scheduler e interfaz
-Con toda la configuración anterior hecha, si se quiere inciar
-el scheduler y la interfaz web, hay que ejecutar:
-1. `airflow scheduler`
-2. `airflow webserver`
+Con toda la configuración anterior hecha, ahora se tiene que iniciar
+el scheduler y la interfaz web. Para ello hay que mantener ejecutandose
+el comando:
+```
+airflow scheduler
+```
 
-Al ejecutar cada uno de los comandos se van a manterner en
-la consola actual y se cierran cuando termina la sesión en
-la terminal o pulsando `CTRL+C`.
+Una vez que ya se está ejecutando el comando anterior hay que abrir una
+terminal nueva y asegurarse de tener activado el ambiente. Para inicializar
+la interfaz web ejecutar el comando:
+```
+airflow webserver
+```
 
-TODO: Agregar cómo mantenerlos ejecutando en segundo plano.
+Para detener los dos comandos anteriores solo hay que cerrar la terminal o
+pulsar `CTRL+C`.
 
-La interfaz se ejecuta por defecto en el puerto `8080`.
-Desde el navegador se visita: `localhost:8080`.
+La interfaz web se ejecutará por defecto en el puerto `8080`. Así que
+para acceder a ella visitar desde el navegador: `localhost:8080`.

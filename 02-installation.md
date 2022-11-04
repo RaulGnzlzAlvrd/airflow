@@ -53,9 +53,9 @@ contraseña de tu preferencia:
 airflow users create -u admin \
     -p admin \
     -f first_name \
-	-l last_name \
-	-r Admin \
-	-e admin@airflow.com
+    -l last_name \
+    -r Admin \
+    -e admin@airflow.com
 ```
 
 ## Iniciar scheduler e interfaz
